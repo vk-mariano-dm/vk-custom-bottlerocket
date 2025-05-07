@@ -10,10 +10,31 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libssl-dev \
+          libudev-dev \
+          pkg-config \
+          libelf-dev \
+          libdw-dev \
+          libcap-dev \
+          libseccomp-dev \
+          libbpfcc-dev \
+          linux-headers-$(uname -r) \
+          clang \
+          llvm git build-essential openssl libssl-dev pkg-config liblz4-tool
+    - name: Install Rust
+      run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+          cargo install cargo-make
   build:
-
     runs-on: rust:latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Build
