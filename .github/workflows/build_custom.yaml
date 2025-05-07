@@ -34,7 +34,8 @@ jobs:
           source $HOME/.cargo/env
           cargo install cargo-make
   build:
-    runs-on: rust:latest
+    runs-on: ubuntu-latest
+    needs: prepare
     steps:
     - uses: actions/checkout@v4
     - name: Build
