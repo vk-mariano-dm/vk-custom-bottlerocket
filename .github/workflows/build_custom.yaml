@@ -12,7 +12,9 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on:
+      group: bottlerocket
+      labels: bottlerocket_ubuntu-latest_32-core
 
     steps:
     - uses: actions/checkout@v4
