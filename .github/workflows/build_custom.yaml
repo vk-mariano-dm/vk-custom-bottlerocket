@@ -12,9 +12,7 @@ env:
 jobs:
   build:
 
-    runs-on:
-      group: bottlerocket
-      labels: bottlerocket_ubuntu-latest_32-core
+    runs-on: rust:latest
 
     steps:
     - uses: actions/checkout@v4
