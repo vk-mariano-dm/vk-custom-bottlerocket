@@ -12,6 +12,7 @@ env:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    container: mdm-test-rust-builder:latest
     steps:
     - name: Install dependencies
       run: |
